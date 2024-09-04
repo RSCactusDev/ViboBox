@@ -1,15 +1,22 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
+const MONGO_URI = process.env.MONGODB_URI || '';
 
-const connectToDatabase = async ():Promise<void> => {
+if (!MONGO_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable');
+}
+
+async function connectToDatabase() {
+  console.log(mongoose.connection.readyState, 'Connecting to MongoDB...');
   if (mongoose.connection.readyState >= 1) return;
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI as string);
+    
+    await mongoose.connect(MONGO_URI);
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
-    process.exit(1);
+    throw error;
   }
 }
 

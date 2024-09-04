@@ -1,13 +1,19 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
+import { getUserModel } from '@/models/User';
 
-export async function GET() {
+export async function POST(req: NextRequest) {
   try {
     await connectToDatabase();
-    return NextResponse.json({ status: 'Connected to MongoDB successfully' }, { status: 200 });
+    const User = await getUserModel();
+
+    const user = new User({ name: 'Test User', email: 'test@example.com' });
+    await user.save();
+    console.log('User saved:', user);
+
+    return NextResponse.json({ message: 'User saved successfully', user }, { status: 201 });
   } catch (error) {
-  console.error('Failed to connect to MongoDB:', error);
-  const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-  return NextResponse.json({ status: 'Failed to connect to MongoDB', error: errorMessage }, { status: 500 });
-}
+    console.error('Error saving user:', error);
+    return NextResponse.json({ message: 'Internal Server Error', error }, { status: 500 });
+  }
 }
