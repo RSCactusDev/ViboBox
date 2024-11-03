@@ -55,6 +55,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token, user }) {
       if (token.role && session.user) {
         session.user.role = token.role as string;
+        session.user.id = token.id as string;
       }
       return session
     },
@@ -96,6 +97,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Adds role to the token by login with crediantals
       if (!token.sub) return token;
 
+      
+
       const existingUser = await getUserById(token.sub);
       
       if (!existingUser) {
@@ -103,7 +106,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       
       token.role = existingUser.role;
-          
+      token.id = token.sub;    
     
       return token;
     },

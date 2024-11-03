@@ -20,12 +20,14 @@ export default {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log("Received credentials:", credentials);
         if (!credentials?.email || !credentials?.password) {
           throw new AuthError("Missing email or password");
         }
 
         try {
           await connectToDatabase();
+          console.log('conected succes')
           const User = await getUserModel();
           
           const user = await User.findOne({ email: credentials.email });

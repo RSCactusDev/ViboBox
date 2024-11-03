@@ -35,4 +35,19 @@ declare module "next-auth/jwt" {
     /** OpenID ID Token */
     idToken?: string
   }
+
+
 } 
+
+export interface CartItem {
+  variant: string;
+  color: string;
+  quantity: number;
+  // Add other properties as needed
+}
+
+
+declare module 'react-image-gallery' {
+  const ImageGallery: any; // You can replace 'any' with a more specific type if needed
+  export default ImageGallery;
+}

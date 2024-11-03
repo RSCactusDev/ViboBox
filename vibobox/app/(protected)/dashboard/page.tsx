@@ -6,6 +6,7 @@ import { getUserModel } from '@/models/User';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { DashBottom } from '@/components/DashBottom';
 
 
 
@@ -19,14 +20,14 @@ const DashboardPage = () => {
     signOut()
     router.push('/')
   }
-
-
-
+  
   return (
-      <div className=' bg-white p-10 rounded-xl' >
-          <div>Dashboard</div>
-          <Button onClick={handleSignOut}>Sign Out</Button>
-      </div>
+    <div className="w-full h-full flex items-center justify-center overflow-hidden">
+    {/* This container should take up the full height of the screen */}
+    <div className="h-full w-full max-w-4xl flex justify-center items-center">
+      <DashBottom />
+    </div>
+  </div>
       
   )
 }

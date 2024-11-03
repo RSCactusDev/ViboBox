@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button" 
-import { Login} from "@/components/login"
-import { LogOut } from "@/components/logout-button"
+import { Login} from "@/components/Login"
+import { LogOut } from "@/components/LogoutButton"
 import { auth } from "@/config/auth"
 
 export default async function Home() {

@@ -21,7 +21,15 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: [
+          "var(--font-sans)",
+          'SF Pro Text', 
+          'SF Pro Icons', 
+          'Helvetica Neue', 
+          'Helvetica', 
+          'Arial', 
+          'sans-serif',
+          ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,6 +65,8 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sandybrown: '#f4a460',
+        sandybrownHover: '#d17a33',
       },
       borderRadius: {
         lg: "var(--radius)",

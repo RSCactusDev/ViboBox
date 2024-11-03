@@ -60,14 +60,14 @@ const ParticlesBackground = () => {
     },
     interactivity: {
       events: {
-        onClick: {
+        /* onClick: {
           enable: true,
           mode: "repulse",
-        },
-        onHover: {
+        }, */
+       onHover: {
           enable: true,
           mode: "bubble",
-        },
+        }, 
         resize: true,
       },
       modes: {

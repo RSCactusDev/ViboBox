@@ -1,0 +1,60 @@
+.custom-gallery .image-gallery-slide img {
+  width: 100%;
+  height: 500px;
+  /* You can change the height according to your design */
+  object-fit: cover;
+  /* Ensures the images are cropped but maintain aspect ratio */
+}
+
+/* Thumbnail styling */
+.custom-gallery .image-gallery-thumbnail img {
+  width: 100px;
+  /* Thumbnail width */
+  height: 75px;
+  /* Thumbnail height */
+  object-fit: cover;
+}
+
+
+.image-gallery-svg {
+  color: black;
+  outline: none;
+}
+
+image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  width: 46px !important;
+}
+
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  width: 46px !important;
+}
+
+.rounded-lg.border.bg-card.text-card-foreground.shadow-sm.mt-3 {
+  opacity: 80%;
+  background-color: aliceblue;
+}
+
+.rounded-lg.border.bg-card.text-card-foreground.shadow-sm {
+  opacity: 80%;
+  background-color: aliceblue;
+}
+
+
+/* Badge styling for cart item count */
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}

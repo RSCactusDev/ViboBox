@@ -19,10 +19,20 @@ import {
 const { auth } = NextAuth(authConfig)
 
 export default auth(async function middleware(req: NextRequest) {
-
   const { nextUrl } = req;
+
+  const method = req.method; // Extract the HTTP method
+
+  if (nextUrl.pathname === '/api/webhook' && method === 'POST') {
+    return NextResponse.next({
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   const token = req.cookies.get('authjs.session-token');
   let isLoggedIn = !!req.cookies.get('authjs.session-token'); // Check if token exists
+
+
   const secret = process.env.AUTH_SECRET || '';
   if (token) {
     try {

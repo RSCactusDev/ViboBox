@@ -12,7 +12,11 @@ async function connectToDatabase() {
 
   try {
     
-    await mongoose.connect(MONGO_URI);
+    await mongoose.connect(MONGO_URI, {
+
+      serverSelectionTimeoutMS: 10000, // Increase to 10 seconds
+      socketTimeoutMS: 45000,
+    });
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
