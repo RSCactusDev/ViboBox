@@ -6,6 +6,8 @@ interface CartItem {
   variant: string;
   color: string;
   quantity: number;
+  customLink?: string; 
+  
 }
 
 interface CartState {

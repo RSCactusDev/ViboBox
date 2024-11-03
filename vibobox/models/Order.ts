@@ -6,6 +6,7 @@ interface IOrderItem {
   color: string;
   quantity: number;
   price: number; // Price of the item at the time of order
+  customLink: string;
 }
 
 
@@ -47,6 +48,7 @@ const OrderSchema: Schema<IOrder> = new mongoose.Schema(
         color: { type: String, required: true },
         quantity: { type: Number, required: true },
         price: { type: Number, required: true },
+        customLink: { type: String, required: false },
       },
     ],
     totalAmount: { type: Number, required: true },

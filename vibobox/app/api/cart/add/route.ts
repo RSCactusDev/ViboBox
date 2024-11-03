@@ -18,7 +18,7 @@ export async function POST( req:Request ) {
   }
  */
 
-  const { variant, color, quantity } = await req.json();
+  const { variant, color, quantity, customLink  } = await req.json();
    // Find the cart associated with the session ID
    let cart = await Cart.findOne({ sessionId });
 
@@ -29,7 +29,7 @@ export async function POST( req:Request ) {
  
    // Check if the item is already in the cart
    const itemIndex = cart.items.findIndex(
-     (item: { variant: string; color: string }) => item.variant === variant && item.color === color
+     (item: { variant: string; color: string; customLink?: string }) => item.variant === variant && item.color === color && item.customLink === customLink
    );
  
    if (itemIndex > -1) {
@@ -37,7 +37,7 @@ export async function POST( req:Request ) {
      cart.items[itemIndex].quantity += quantity;
    } else {
      // If the item doesn't exist, add a new one
-     cart.items.push({ variant, color, quantity });
+     cart.items.push({ variant, color, quantity, customLink  });
    }
  
    // Save the cart with the new or updated item

@@ -1,7 +1,7 @@
 // utils/productOptions.ts
 export const productOptions = {
   variants: {
-    boxWithQR: {
+    box: {
       name: 'Box with QR code',
       price: 14.98,
     },

@@ -8,6 +8,7 @@ import ReactImageGallery from "react-image-gallery";
 import { BiShoppingBag } from "react-icons/bi";
 import { useCartStore } from '@/store/cartStore';
 import "react-image-gallery/styles/css/image-gallery.css";
+import { Input } from "@/components/ui/input"
 import axios from "axios";
 import Link from 'next/link';
 
@@ -16,6 +17,7 @@ const ProductPage = () => {
   const [selectedOption, setSelectedOption] = useState('box');
   const [selectedColor, setSelectedColor] = useState('red');
   const [quantity, setQuantity] = useState(1);
+  const [customLink, setCustomLink] = useState('')
 
   // Zustand store methods
   const addItemToCart = useCartStore((state) => state.addItemToCart);
@@ -28,27 +30,18 @@ const ProductPage = () => {
   }, [fetchCart]); // Add the closing parenthesis and empty dependency array
 
 
-  /* const handleAddToCart = async () => {
-    try {
-      const response = await axios.post('/api/cart/add', {
-        variant: selectedOption,
-        color: selectedColor,
-        quantity
-      });
-      console.log(response, 'responseee')
-      if (response.status === 200) {
-        alert('Item added to cart');
-      }
-    } catch (error) {
-      console.error('Failed to add to cart', error);
-    }
-  }; */
+ 
 
   const handleAddToCart = async () => {
+    if (!selectedOption) {
+      alert('Please select a valid product option.');
+      return;
+    }
     const newItem = {
       variant: selectedOption,
       color: selectedColor,
       quantity,
+      customLink: selectedOption === 'box' ? customLink : '',
     };
 
     await addItemToCart(newItem); // Add the item to the cart using Zustand
@@ -191,6 +184,23 @@ const ProductPage = () => {
            
             </RadioGroup.Root>
           </div>
+          { (selectedOption === 'box' || selectedOption === 'bundleX10' || selectedOption === 'bundleX5') && (
+            <div className="w-full mt-3">
+            <label className="block text-base font-medium mb-1" htmlFor="customLink">Your custom URL link for QR code:</label>
+            <p className="text-sm text-black-500 mb-1">
+                 * If you don&apos;t enter a link, a ViboBox game link will be provided. Read more here.
+                </p>
+           <Input
+              id="customLink"
+              value={customLink}
+              onChange={ (e) => setCustomLink(e.target.value) }
+              placeholder="Enter your custom Link"
+            >
+            
+            </Input>
+          </div>
+          )}
+          
 
           <div className="mt-6">
           <p className="pb-2 text-base font-sans font-bold">Color</p>

@@ -13,6 +13,7 @@ interface Product {
   name: string;
   price: number;
   imageSrc?: string;
+  customLink?: string;
 }
 interface CartDialogProps {
   isOpen: boolean;
