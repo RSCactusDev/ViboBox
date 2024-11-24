@@ -39,7 +39,8 @@ export async function POST(request: Request) {
       },
     });
 
-    const resetLink = `${process.env.PUBLIC_URL}/auth/reset-password?token=${resetToken}`;
+    const resetLink = `${process.env.PUBLIC_URL}/?reset=true&token=${resetToken}`;
+
 
     await transporter.sendMail({
       from: 'viboboxofficial@gmail.com',

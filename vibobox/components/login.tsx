@@ -1,20 +1,4 @@
-/* 
-import { signIn } from "@/config/auth"
-import { Button } from "@/components/ui/button"
-export function Login() {
-  return (
-    <form
-      action={async () => {
-        "use server"
-        await signIn("google")
-      }}
-    >
-      <Button type="submit">Signin with Google</Button>
-    </form>
-  )
-}  */
-
-  "use client";  // Ensures the component is client-side rendered
+"use client";  
 
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -28,7 +12,7 @@ export function Login() {
 
     if (!result?.error) {
       // If there's no error, redirect to /settings
-      router.push("/settings");
+      /* router.push("/dashboard"); */
     } else {
       // Handle the error (optional)
       console.error("Sign-in failed:", result.error);

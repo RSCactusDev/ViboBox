@@ -36,7 +36,7 @@ const Login = () => {
       }
       console.error("Signin failed:", result.error);
     } else if (result?.ok) {
-      router.push("/settings");
+      router.push("/dashboard");
     }
   };
 

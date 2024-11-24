@@ -5,6 +5,7 @@ import client from "@/lib/db"
 import authConfig from "./auth.config"
 import { getUserById, getUserModel } from "@/models/User"
 import connectToDatabase  from "@/lib/mongodb"
+import mongoose from "mongoose"
 
 
 
@@ -16,17 +17,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       await connectToDatabase();
       const User = await getUserModel();
 
-      // Find the credentials user with the same email
-      const existingUser = await User.findOne({ email: user.email });
+      // Check if the account already exists in the Accounts collection
+      const existingAccount = await mongoose.models.Accounts.findOne({
+        provider: account.provider,
+        providerAccountId: account.providerAccountId,
+      });
 
-      if (existingUser) {
-        // Link OAuth account to existing credentials account
-        existingUser.googleId = account.providerAccountId; // Or the appropriate OAuth field
-        existingUser.emailVerified = new Date();
-        await existingUser.save();
+      if (!existingAccount) {
+        const existingUser = await User.findOne({ email: user.email });
+        
+        if (existingUser) {
+          existingUser.googleId = account.providerAccountId;
+          existingUser.emailVerified = new Date();
+          await existingUser.save();
+        }
       }
     },
   },
+
 
   callbacks: {
     async signIn({ user, account }) {
@@ -112,7 +120,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async redirect({ url, baseUrl }) {
       if (url.startsWith(baseUrl)) {
-        return `${baseUrl}/settings`;
+        return `${baseUrl}/dashboard`;
       }
       return url;
     },

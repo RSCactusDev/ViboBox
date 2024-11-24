@@ -15,7 +15,6 @@
   object-fit: cover;
 }
 
-
 .image-gallery-svg {
   color: black;
   outline: none;
@@ -25,7 +24,6 @@ image-gallery-left-nav .image-gallery-svg,
 .image-gallery-right-nav .image-gallery-svg {
   width: 46px !important;
 }
-
 
 .image-gallery-left-nav .image-gallery-svg,
 .image-gallery-right-nav .image-gallery-svg {
@@ -42,7 +40,6 @@ image-gallery-left-nav .image-gallery-svg,
   background-color: aliceblue;
 }
 
-
 /* Badge styling for cart item count */
 .cart-badge {
   position: absolute;
@@ -57,4 +54,13 @@ image-gallery-left-nav .image-gallery-svg,
   align-items: center;
   justify-content: center;
   font-size: 11px;
+}
+
+.content {
+  flex: 1;
+}
+
+.bg-white.mt-2.h-10.w-\[90\%\].mx-auto.mb-2.bg-opacity-20.rounded-xl.border-none.shadow-md.p-4.flex.justify-between.items-center.undefined {
+  position: relative;
+  z-index: 20;
 }

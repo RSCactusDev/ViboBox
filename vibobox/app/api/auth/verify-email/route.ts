@@ -19,6 +19,7 @@ export async function GET(request: Request) {
     const user = await User.findOne({ vertificationToken: token });
 
     if (!user) {
+    
       return NextResponse.json({ message: "Invalid token user" }, { status: 400 });
     }
 

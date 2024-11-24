@@ -33,10 +33,10 @@ const ProductPage = () => {
  
 
   const handleAddToCart = async () => {
-    if (!selectedOption) {
+    /* if (!selectedOption) {
       alert('Please select a valid product option.');
       return;
-    }
+    } */
     const newItem = {
       variant: selectedOption,
       color: selectedColor,
@@ -45,7 +45,7 @@ const ProductPage = () => {
     };
 
     await addItemToCart(newItem); // Add the item to the cart using Zustand
-    alert('Item added to cart');
+    /*  alert('Item added to cart'); */
   };
 
 

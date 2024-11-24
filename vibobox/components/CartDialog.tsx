@@ -82,7 +82,7 @@ export default function CartDialog({ isOpen, onClose }: CartDialogProps) {
   return (
     <>
     <Transition appear show={isVisible} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={handleClose}>
+      <Dialog as="div" className="relative z-20" onClose={handleClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"

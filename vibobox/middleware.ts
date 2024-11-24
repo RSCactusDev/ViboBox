@@ -61,7 +61,7 @@ export default auth(async function middleware(req: NextRequest) {
   }
 
   if (!isPublicRoute && !isLoggedIn) {
-    return Response.redirect(new URL('/auth/login', nextUrl));
+    return Response.redirect(new URL('/', nextUrl));
   }
 
   return NextResponse.next();

@@ -13,7 +13,9 @@ export async function sendVerificationEmail(email: string, verificationToken: st
   });
 
 
-  const vertificationLink = `${process.env.PUBLIC_URL}/verify-email?token=${verificationToken}`;
+
+  const vertificationLink = `${process.env.PUBLIC_URL}/?verified=true&token=${verificationToken}`;
+
   
   await transporter.sendMail({
     from: 'viboboxofficial@gmail.com',

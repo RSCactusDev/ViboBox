@@ -23,10 +23,11 @@ export const UserButton = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="translate-x-[-13px] w-40">
-        <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
+        <DropdownMenuItem className="cursor-pointer" onClick={() => signOut({ callbackUrl: '/' })}>
           <ExitIcon className="h-4 w-4 mr-2" />Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
+

@@ -6,6 +6,8 @@ import { auth } from "@/config/auth";
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
 
+import '@/styles/main.css'; 
+
   
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,18 +20,28 @@ export const metadata: Metadata = {
 };
 
 export default async function  RootLayout({
+
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth()
+  const session = await auth();
   return (
     <SessionProvider session={session}>
       <html lang="en">
         <body  className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "min-h-screen flex flex-col relative  bg-background font-sans antialiased bg-[radial-gradient(ellipse_at_left,_#161b22,_#29446e)]",
             fontSans.variable
-          )}>{children}</body>
+          )}>
+          
+        
+          <div className="content flex-grow">{children}</div>
+
+          
+
+        </body>
+        
+          
       </html>
     </SessionProvider>
   );
